@@ -1,34 +1,34 @@
 {
-    "name": "socialiteproviders/saml2",
-    "description": "SAML2 Service Provider for Laravel Socialite",
-    "keywords": [
-        "laravel",
-        "oauth",
-        "provider",
-        "saml2",
-        "socialite"
-    ],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Chris Lloyd",
-            "email": "chrislloyd403@gmail.com"
-        }
-    ],
-    "require": {
-        "php": "^7.2 || ^8.0",
-        "ext-json": "*",
-        "dropbox/lightsaml": "^2.0",
-        "socialiteproviders/manager": "~4.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "SocialiteProviders\\Saml2\\": ""
-        }
-    },
-    "support": {
-        "issues": "https://github.com/socialiteproviders/providers/issues",
-        "source": "https://github.com/socialiteproviders/providers",
-        "docs": "https://socialiteproviders.com/saml2"
+  "name": "socialiteproviders/saml2",
+  "description": "SAML2 Service Provider for Laravel Socialite",
+  "keywords": [
+    "laravel",
+    "oauth",
+    "provider",
+    "saml2",
+    "socialite"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Chris Lloyd",
+      "email": "chrislloyd403@gmail.com"
     }
+  ],
+  "require": {
+    "php": "^7.2 || ^8.0",
+    "ext-json": "*",
+    "lightsaml/lightsaml": "^2.3",
+    "socialiteproviders/manager": "~4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SocialiteProviders\\Saml2\\": ""
+    }
+  },
+  "support": {
+    "issues": "https://github.com/socialiteproviders/providers/issues",
+    "source": "https://github.com/socialiteproviders/providers",
+    "docs": "https://socialiteproviders.com/saml2"
+  }
 }
