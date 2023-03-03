@@ -702,7 +702,12 @@ class Provider extends AbstractProvider implements SocialiteProvider
 
     protected function getNameIDFormat(): string
     {
-        return $this->getConfig('sp_name_id_format', SamlConstants::NAME_ID_FORMAT_PERSISTENT);
+        $default = SamlConstants::NAME_ID_FORMAT_PERSISTENT;
+        $format = $this->getConfig('sp_name_id_format', $default);
+
+        return SamlConstants::isNameIdFormatValid($format)
+            ? $format
+            : $default;
     }
 
     protected function getTokenUrl()
