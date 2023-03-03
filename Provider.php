@@ -199,7 +199,7 @@ class Provider extends AbstractProvider implements SocialiteProvider
             ->setProtocolBinding($this->getDefaultAssertionConsumerServiceBinding())
             ->setIssueInstant(new DateTime())
             ->setDestination($identityProviderConsumerService->getLocation())
-            ->setNameIDPolicy((new NameIDPolicy())->setFormat(SamlConstants::NAME_ID_FORMAT_PERSISTENT))
+            ->setNameIDPolicy((new NameIDPolicy())->setFormat($this->getNameIDFormat()))
             ->setIssuer(new Issuer($this->getServiceProviderEntityDescriptor()->getEntityID()))
             ->setAssertionConsumerServiceURL($this->getServiceProviderAssertionConsumerUrl());
 
@@ -348,7 +348,7 @@ class Provider extends AbstractProvider implements SocialiteProvider
     public function getServiceProviderEntityDescriptor(): EntityDescriptor
     {
         $spSsoDescriptor = new SpSsoDescriptor();
-        $spSsoDescriptor->setWantAssertionsSigned(true)->addNameIDFormat(SamlConstants::NAME_ID_FORMAT_PERSISTENT);
+        $spSsoDescriptor->setWantAssertionsSigned(true)->addNameIDFormat($this->getNameIDFormat());
 
         foreach ([SamlConstants::BINDING_SAML2_HTTP_REDIRECT, SamlConstants::BINDING_SAML2_HTTP_POST] as $binding) {
             $acsRoute = $this->getAssertionConsumerServiceRoute();
@@ -698,6 +698,11 @@ class Provider extends AbstractProvider implements SocialiteProvider
         }
 
         return $cert->setData($data);
+    }
+
+    protected function getNameIDFormat(): string
+    {
+        return $this->getConfig('sp_name_id_format', SamlConstants::NAME_ID_FORMAT_PERSISTENT);
     }
 
     protected function getTokenUrl()
