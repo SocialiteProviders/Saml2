@@ -176,7 +176,7 @@ openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout sp_saml.pem 
 
 The provider validates the timestamps in the assertion including `NotBefore` and `NotOnOrAfter`.
 The default clock skew is 120 seconds but this can be changed as part of the config:
-```
+```php
 'saml2' => [
   'metadata' => 'https://idp.co/metadata/xml',
   'validation' => [
@@ -186,7 +186,7 @@ The default clock skew is 120 seconds but this can be changed as part of the con
 ```
 
 The provider checks that the identity provider never repeats an assertion ID. IDs are remembered forever by default, but this can be configured:
-```
+```php
 'saml2' => [
   'metadata' => 'https://idp.co/metadata/xml',
   'validation' => [
